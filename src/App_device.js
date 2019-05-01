@@ -44,17 +44,13 @@ class App extends Component {
   };
 
   render() {
-    // const { data } = this.state;
-    //
-    // if (!data) return null;
-    //
-    // const res = this.processData(data);
+    const { data } = this.state;
 
-    return <div className="App">
-      <button style={{ marginTop: 100 }} onClick={() => window.open('https://m.naver.com/')}>
-        웹뷰
-      </button>
-    </div>;
+    if (!data) return null;
+
+    const res = this.processData(data);
+
+    return <div className="App">{this.renderData(res)}</div>;
   }
 }
 
