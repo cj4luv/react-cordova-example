@@ -1,23 +1,26 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component } from 'react';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: null,
+      data: null
     };
   }
 
   componentDidMount() {
-    document.addEventListener("deviceready", this.onDeviceReady, false);
+    document.addEventListener('deviceready', this.onDeviceReady, false);
   }
 
   onDeviceReady = () => {
-    console.log(window.device.cordova);
+    window.universalLinks.subscribe('openNewsListPage', function(eventData) {
+      // do some work
+      console.log('Did launch application from the link: ' + eventData.url);
+    });
     this.setState({ data: window.device });
-  }
+  };
 
   processData = data => {
     console.log(data);
@@ -38,7 +41,13 @@ class App extends Component {
     return data.map(item => (
       <ul key={item.key}>
         <li>{item.key}</li>
-        <li>{typeof item.data === 'boolean' ? item.data ? 'true' : 'false' : item.data}</li>
+        <li>
+          {typeof item.data === 'boolean'
+            ? item.data
+              ? 'true'
+              : 'false'
+            : item.data}
+        </li>
       </ul>
     ));
   };
@@ -50,11 +59,16 @@ class App extends Component {
     //
     // const res = this.processData(data);
 
-    return <div className="App">
-      <button style={{ marginTop: 100 }} onClick={() => window.open('https://m.naver.com/')}>
-        웹뷰
-      </button>
-    </div>;
+    return (
+      <div className="App">
+        <button
+          style={{ marginTop: 100 }}
+          onClick={() => window.open('https://m.naver.com/')}
+        >
+          웹뷰
+        </button>
+      </div>
+    );
   }
 }
 
