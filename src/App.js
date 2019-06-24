@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 
+function successCallback(res) {
+  console.log(res);
+  alert('Authentication successfull');
+}
+
+function errorCallback(err) {
+  alert('Authentication invalid ' + err);
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,11 +24,21 @@ class App extends Component {
   }
 
   onDeviceReady = () => {
-    window.universalLinks.subscribe('openNewsListPage', function(eventData) {
-      // do some work
-      console.log('Did launch application from the link: ' + eventData.url);
-    });
-    this.setState({ data: window.device });
+    window.Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
+
+    function isAvailableSuccess(result) {
+      /*
+      result depends on device and os. 
+      iPhone X will return 'face' other Android or iOS devices will return 'finger'  
+      */
+      alert('Fingerprint available');
+    }
+
+    function isAvailableError(message) {
+      alert(message);
+    }
+
+    this.setState({ data: window.Fingerprint });
   };
 
   processData = data => {
@@ -53,19 +72,31 @@ class App extends Component {
   };
 
   render() {
-    // const { data } = this.state;
-    //
-    // if (!data) return null;
-    //
-    // const res = this.processData(data);
+    const { data } = this.state;
+
+    if (!data) return null;
+
+    const res = this.processData(data);
 
     return (
       <div className="App">
+        {this.renderData(res)}
         <button
           style={{ marginTop: 100 }}
-          onClick={() => window.open('https://m.naver.com/')}
+          onClick={() => {
+            window.Fingerprint.show(
+              {
+                clientId: 'Fingerprint-Demo', //Android: Used for encryption. iOS: used for dialogue if no `localizedReason` is given.
+                locale: 'ko-KR',
+                clientSecret: 'o7aoOMYUbyxaD23oFAnJ',
+                dialogTitle: '하이페이'
+              },
+              successCallback,
+              errorCallback
+            );
+          }}
         >
-          웹뷰
+          하이페이 앱으로 돌아가기
         </button>
       </div>
     );
