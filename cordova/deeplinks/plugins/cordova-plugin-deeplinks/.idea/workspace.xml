@@ -59,17 +59,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appleAppSiteAssociationFile.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hooks/lib/ios/appleAppSiteAssociationFile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="universal_links.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/universal_links.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -172,13 +161,6 @@
               <item name="hooks" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="android" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="cordova-plugin-deeplinks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cordova-plugin-deeplinks" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="hooks" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="ios" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -428,15 +410,6 @@
             <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hooks/lib/ios/appleAppSiteAssociationFile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

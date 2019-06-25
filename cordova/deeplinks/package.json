@@ -28,7 +28,8 @@
       "cordova-plugin-deeplinks": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

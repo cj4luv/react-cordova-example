@@ -8,11 +8,7 @@ data you have specified in the projects config.xml file.
 var configParser = require('./lib/configXmlParser.js');
 var androidManifestWriter = require('./lib/android/manifestWriter.js');
 var androidWebHook = require('./lib/android/webSiteHook.js');
-var iosProjectEntitlements = require('./lib/ios/projectEntitlements.js');
-var iosAppSiteAssociationFile = require('./lib/ios/appleAppSiteAssociationFile.js');
-var iosProjectPreferences = require('./lib/ios/xcodePreferences.js');
 var ANDROID = 'android';
-var IOS = 'ios';
 
 module.exports = function(ctx) {
   run(ctx);
@@ -45,11 +41,6 @@ function run(cordovaContext) {
           activateUniversalLinksInAndroid(cordovaContext, pluginPreferences);
           break;
         }
-      case IOS:
-        {
-          activateUniversalLinksInIos(cordovaContext, pluginPreferences);
-          break;
-        }
     }
   });
 }
@@ -66,21 +57,4 @@ function activateUniversalLinksInAndroid(cordovaContext, pluginPreferences) {
 
   // generate html file with the <link> tags that you should inject on the website.
   androidWebHook.generate(cordovaContext, pluginPreferences);
-}
-
-/**
- * Activate Universal Links for iOS application.
- *
- * @param {Object} cordovaContext - cordova context object
- * @param {Object} pluginPreferences - plugin preferences from the config.xml file. Basically, content from <universal-links> tag.
- */
-function activateUniversalLinksInIos(cordovaContext, pluginPreferences) {
-  // modify xcode project preferences
-  iosProjectPreferences.enableAssociativeDomainsCapability(cordovaContext);
-
-  // generate entitlements file
-  iosProjectEntitlements.generateAssociatedDomainsEntitlements(cordovaContext, pluginPreferences);
-
-  // generate apple-site-association-file
-  iosAppSiteAssociationFile.generate(cordovaContext, pluginPreferences);
 }

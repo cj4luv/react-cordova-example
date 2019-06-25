@@ -4,7 +4,6 @@ Helper class to read data from config.xml file.
 var path = require('path');
 var xmlHelper = require('./xmlHelper.js');
 var ANDROID = 'android';
-var IOS = 'ios';
 var CONFIG_FILE_NAME = 'config.xml';
 var context;
 var projectRoot;
@@ -49,11 +48,6 @@ ConfigXmlHelper.prototype.getPackageName = function(platform) {
     case ANDROID:
       {
         packageName = config.android_packageName();
-        break;
-      }
-    case IOS:
-      {
-        packageName = config.ios_CFBundleIdentifier();
         break;
       }
   }
