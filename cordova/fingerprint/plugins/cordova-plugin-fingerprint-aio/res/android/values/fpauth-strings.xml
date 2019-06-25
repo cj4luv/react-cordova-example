@@ -23,6 +23,6 @@
     <string name="fingerprint_hint">터치 센서</string>
     <string name="fingerprint_not_recognized">지문 인식이되지 않습니다. 다시 시도하십시오.</string>
     <string name="fingerprint_success">지문 인증이 되었습니다.</string>
-    <string name="new_fingerprint_enrolled_description">이 장치에 새 지문이 추가되었으므로 암호가 필요합니다.</string>
+    <string name="new_fingerprin0t_enrolled_description">이 장치에 새 지문이 추가되었으므로 암호가 필요합니다.</string>
     <string name="secure_lock_screen_required">보안 잠금 화면이 필요합니다!</string>
 </resources>

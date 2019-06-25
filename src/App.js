@@ -31,10 +31,13 @@ class App extends Component {
       result depends on device and os. 
       iPhone X will return 'face' other Android or iOS devices will return 'finger'  
       */
+      console.log('FingerprintAuth available: ', result);
+
       alert('Fingerprint available');
     }
 
     function isAvailableError(message) {
+      console.log('isAvailableError(): ' + message);
       alert(message);
     }
 
@@ -87,9 +90,7 @@ class App extends Component {
             window.Fingerprint.show(
               {
                 clientId: 'Fingerprint-Demo', //Android: Used for encryption. iOS: used for dialogue if no `localizedReason` is given.
-                locale: 'ko-KR',
-                clientSecret: 'o7aoOMYUbyxaD23oFAnJ',
-                dialogTitle: '하이페이'
+                clientSecret: 'o7aoOMYUbyxaD23oFAnJ'
               },
               successCallback,
               errorCallback
