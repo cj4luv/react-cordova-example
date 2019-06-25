@@ -18,15 +18,7 @@ module.exports = {
  * @param {Object} pluginPreferences - plugin preferences as JSON object; already parsed
  */
 function writePreferences(cordovaContext, pluginPreferences) {
-  var pathToManifest = path.join(
-    cordovaContext.opts.projectRoot,
-    'platforms',
-    'android',
-    'app',
-    'src',
-    'main',
-    'AndroidManifest.xml'
-  );
+  var pathToManifest = path.join(cordovaContext.opts.projectRoot, 'platforms', 'android', 'AndroidManifest.xml');
   var manifestSource = xmlHelper.readXmlAsJson(pathToManifest);
   var cleanManifest;
   var updatedManifest;
@@ -39,16 +31,8 @@ function writePreferences(cordovaContext, pluginPreferences) {
    * @see http://cordova.apache.org/announcements/2017/12/04/cordova-android-7.0.0.html
    */
   if (!manifestSource) {
-    pathToManifest = path.join(
-      cordovaContext.opts.projectRoot,
-      'platforms',
-      'android',
-      'app',
-      'src',
-      'main',
-      'AndroidManifest.xml'
-    );
-    manifestSource = xmlHelper.readXmlAsJson(pathToManifest);
+      pathToManifest = path.join(cordovaContext.opts.projectRoot, 'platforms', 'android', 'app', 'src', 'main', 'AndroidManifest.xml');
+      manifestSource = xmlHelper.readXmlAsJson(pathToManifest);
   }
 
   // remove old intent-filters
@@ -115,11 +99,9 @@ function isIntentFilterForUniversalLinks(intentFilter) {
   var categories = intentFilter['category'];
   var data = intentFilter['data'];
 
-  return (
-    isActionForUniversalLinks(actions) &&
+  return isActionForUniversalLinks(actions) &&
     isCategoriesForUniversalLinks(categories) &&
-    isDataTagForUniversalLinks(data)
-  );
+    isDataTagForUniversalLinks(data);
 }
 
 /**
@@ -136,7 +118,7 @@ function isActionForUniversalLinks(actions) {
 
   var action = actions[0]['$']['android:name'];
 
-  return 'android.intent.action.VIEW' === action;
+  return ('android.intent.action.VIEW' === action);
 }
 
 /**
@@ -202,16 +184,13 @@ function isDataTagForUniversalLinks(data) {
  */
 function injectOptions(manifestData, pluginPreferences) {
   var changedManifest = manifestData;
-  var activitiesList =
-    changedManifest['manifest']['application'][0]['activity'];
+  var activitiesList = changedManifest['manifest']['application'][0]['activity'];
   var launchActivityIndex = getMainLaunchActivityIndex(activitiesList);
   var ulIntentFilters = [];
   var launchActivity;
 
   if (launchActivityIndex < 0) {
-    console.warn(
-      "Could not find launch activity in the AndroidManifest file. Can't inject Universal Links preferences."
-    );
+    console.warn('Could not find launch activity in the AndroidManifest file. Can\'t inject Universal Links preferences.');
     return;
   }
 
@@ -221,16 +200,12 @@ function injectOptions(manifestData, pluginPreferences) {
   // generate intent-filters
   pluginPreferences.hosts.forEach(function(host) {
     host.paths.forEach(function(hostPath) {
-      ulIntentFilters.push(
-        createIntentFilter(host.name, host.scheme, hostPath)
-      );
+      ulIntentFilters.push(createIntentFilter(host.name, host.scheme, hostPath));
     });
   });
 
   // add Universal Links intent-filters to the launch activity
-  launchActivity['intent-filter'] = launchActivity['intent-filter'].concat(
-    ulIntentFilters
-  );
+  launchActivity['intent-filter'] = launchActivity['intent-filter'].concat(ulIntentFilters);
 
   return changedManifest;
 }
@@ -273,19 +248,12 @@ function isLaunchActivity(activity) {
     var action = intentFilter['action'];
     var category = intentFilter['category'];
 
-    if (
-      action == null ||
-      action.length != 1 ||
-      category == null ||
-      category.length != 1
-    ) {
+    if (action == null || action.length != 1 || category == null || category.length != 1) {
       return false;
     }
 
-    var isMainAction =
-      'android.intent.action.MAIN' === action[0]['$']['android:name'];
-    var isLauncherCategory =
-      'android.intent.category.LAUNCHER' === category[0]['$']['android:name'];
+    var isMainAction = ('android.intent.action.MAIN' === action[0]['$']['android:name']);
+    var isLauncherCategory = ('android.intent.category.LAUNCHER' === category[0]['$']['android:name']);
 
     return isMainAction && isLauncherCategory;
   });
@@ -303,36 +271,29 @@ function isLaunchActivity(activity) {
  */
 function createIntentFilter(host, scheme, pathName) {
   var intentFilter = {
-    $: {
+    '$': {
       'android:autoVerify': 'true'
     },
-    action: [
-      {
-        $: {
-          'android:name': 'android.intent.action.VIEW'
-        }
+    'action': [{
+      '$': {
+        'android:name': 'android.intent.action.VIEW'
       }
-    ],
-    category: [
-      {
-        $: {
-          'android:name': 'android.intent.category.DEFAULT'
-        }
-      },
-      {
-        $: {
-          'android:name': 'android.intent.category.BROWSABLE'
-        }
+    }],
+    'category': [{
+      '$': {
+        'android:name': 'android.intent.category.DEFAULT'
       }
-    ],
-    data: [
-      {
-        $: {
-          'android:host': host,
-          'android:scheme': scheme
-        }
+    }, {
+      '$': {
+        'android:name': 'android.intent.category.BROWSABLE'
       }
-    ]
+    }],
+    'data': [{
+      '$': {
+        'android:host': host,
+        'android:scheme': scheme
+      }
+    }]
   };
 
   injectPathComponentIntoIntentFilter(intentFilter, pathName);

@@ -22,7 +22,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-deeplinks/-/cordova-plugin-deeplinks-1.1.0.tgz",
   "_shasum": "c7c2f95ef35ee6747325db17ba177b231a21b469",
   "_spec": "cordova-plugin-deeplinks",
-  "_where": "/Users/laon/WorkSpace/react-cordova-example/cordova/Deeplinks",
+  "_where": "/Users/laon/WorkSpace/react-cordova-example/cordova/deeplinks",
   "author": {
     "name": "Nikolay Demyankov for Nordnet Bank AB"
   },
@@ -33,7 +33,6 @@
   "cordova": {
     "id": "cordova-plugin-deeplinks",
     "platforms": [
-      "ios",
       "android"
     ]
   },
@@ -48,10 +47,6 @@
   "description": "Cordova plugin to add in your application support for Universal Links (iOS 9) and Deep Links (Android). Basically, open application through the link in the browser.",
   "engines": [
     {
-      "name": "cordova-ios",
-      "version": ">=3.8"
-    },
-    {
       "name": "cordova-android",
       "version": ">=4"
     }
@@ -64,9 +59,7 @@
     "deep links",
     "universal links",
     "ecosystem:cordova",
-    "cordova-ios",
     "cordova-android",
-    "ios",
     "android"
   ],
   "license": "MIT",

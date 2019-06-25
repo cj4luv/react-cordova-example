@@ -7,18 +7,18 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-deeplinks": {
+  "cordova-plugin-add-swift-support": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-deeplinks"
+      "id": "cordova-plugin-add-swift-support"
     },
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-universal-links-plugin": {
+  "cordova-plugin-deeplinks": {
     "source": {
       "type": "registry",
-      "id": "cordova-universal-links-plugin"
+      "id": "cordova-plugin-deeplinks@^1.1.0"
     },
     "is_top_level": true,
     "variables": {}
