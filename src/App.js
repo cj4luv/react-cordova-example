@@ -77,7 +77,7 @@ class App extends Component {
   render() {
     const { data } = this.state;
 
-    if (!data) return null;
+    // if (!data) return null;
 
     const res = this.processData(data);
 
@@ -99,6 +99,9 @@ class App extends Component {
         >
           하이페이 앱으로 돌아가기
         </button>
+        <a style={{ marginTop: 100 }} href="hipay://">
+          Open my app
+        </a>
       </div>
     );
   }
