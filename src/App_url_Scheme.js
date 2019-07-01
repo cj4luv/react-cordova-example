@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// function successCallback(res) {
-//   console.log(res);
-//   alert('Authentication successfull');
-// }
+function successCallback(res) {
+  console.log(res);
+  alert('Authentication successfull');
+}
 
-// function errorCallback(err) {
-//   alert('Authentication invalid ' + err);
-// }
+function errorCallback(err) {
+  alert('Authentication invalid ' + err);
+}
 
 class App extends Component {
   constructor(props) {
@@ -87,13 +87,21 @@ class App extends Component {
         <button
           style={{ marginTop: 100 }}
           onClick={() => {
-            if (window.cordova) {
-              navigator.app.exitApp();
-            }
+            window.Fingerprint.show(
+              {
+                clientId: 'Fingerprint-Demo', //Android: Used for encryption. iOS: used for dialogue if no `localizedReason` is given.
+                clientSecret: 'o7aoOMYUbyxaD23oFAnJ'
+              },
+              successCallback,
+              errorCallback
+            );
           }}
         >
-          앱종료
+          하이페이 앱으로 돌아가기
         </button>
+        <a style={{ marginTop: 100 }} href="hipay://">
+          Open my app
+        </a>
       </div>
     );
   }
