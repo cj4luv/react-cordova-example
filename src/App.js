@@ -1,101 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// function successCallback(res) {
-//   console.log(res);
-//   alert('Authentication successfull');
-// }
-
-// function errorCallback(err) {
-//   alert('Authentication invalid ' + err);
-// }
-
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      data: null
-    };
-  }
-
   componentDidMount() {
-    // document.addEventListener('deviceready', this.onDeviceReady, false);
+    document.addEventListener('deviceready', this.onDeviceReady, false);
   }
 
   onDeviceReady = () => {
-    window.Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
+    // Enable to debug issues.
+    // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
 
-    function isAvailableSuccess(result) {
-      /*
-      result depends on device and os. 
-      iPhone X will return 'face' other Android or iOS devices will return 'finger'  
-      */
-      console.log('FingerprintAuth available: ', result);
+    var notificationOpenedCallback = function(jsonData) {
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    };
 
-      alert('Fingerprint available');
-    }
-
-    function isAvailableError(message) {
-      console.log('isAvailableError(): ' + message);
-      alert(message);
-    }
-
-    this.setState({ data: window.Fingerprint });
-  };
-
-  processData = data => {
-    console.log(data);
-    const arr = [];
-    for (let i in data) {
-      if (Object.prototype.hasOwnProperty.call(data, i)) {
-        arr.push({
-          key: i,
-          data: data[i]
-        });
-      }
-    }
-    console.log(arr);
-    return arr;
-  };
-
-  renderData = data => {
-    return data.map(item => (
-      <ul key={item.key}>
-        <li>{item.key}</li>
-        <li>
-          {typeof item.data === 'boolean'
-            ? item.data
-              ? 'true'
-              : 'false'
-            : item.data}
-        </li>
-      </ul>
-    ));
+    window.plugins.OneSignal.startInit('7ea1280d-59a6-48d7-8cf4-27d3c1dca813')
+      .handleNotificationOpened(notificationOpenedCallback)
+      .endInit();
   };
 
   render() {
-    const { data } = this.state;
-
-    // if (!data) return null;
-
-    const res = this.processData(data);
-
-    return (
-      <div className="App">
-        {this.renderData(res)}
-        <button
-          style={{ marginTop: 100 }}
-          onClick={() => {
-            if (window.cordova) {
-              navigator.app.exitApp();
-            }
-          }}
-        >
-          앱종료
-        </button>
-      </div>
-    );
+    return <div className="App">index</div>;
   }
 }
 
