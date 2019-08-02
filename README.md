@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+하이페이 코도바 플러그인 목록
 
-## Available Scripts
+cordova-plugin-device
+- 유저 단말기 정보를 가져오기 위한
+- 주소: https://github.com/apache/cordova-plugin-device
 
-In the project directory, you can run:
+cordova-plugin-fingerprint-aio
+- 지문 인식을 위한
+- 주소: https://github.com/niklasmerz/cordova-plugin-fingerprint-aio
 
-### `npm start`
+onesignal-cordova-plugin
+- 원시그널 사용을 위한
+- 주소: https://github.com/onesignal/OneSignal-Cordova-SDK
+- 사용방법 주소: https://documentation.onesignal.com/docs/cordova-sdk-setup
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+cordova-plugin-customurlscheme
+- 딥링크를 위한 유알엘 스킴 생성
+- 주소: https://github.com/EddyVerbruggen/Custom-URL-scheme
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+cordova-plugin-qrscanner
+- 큐알 코드 스캐너를 위한 플러그인
+- 주소: https://github.com/bitpay/cordova-plugin-qrscanner
+- 커스텀한 내용: https://github.com/bitpay/cordova-plugin-qrscanner/pull/272
 
-### `npm test`
+cordova-plugin-deeplinks
+- 딥링크를 위한 플러그인 (커스텀 함)
+- 주소: https://github.com/e-imaxina/cordova-plugin-deeplinks
+- 커스텀한 내용: https://github.com/e-imaxina/cordova-plugin-deeplinks
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+cordova-plugin-exitapp2
+- 네트워크 비활성 일때 앱종료 (커스텀 함)
+- 주소: https://github.com/joycorp/cordova-plugin-exitapp
+- 커스텀한 내용: https://github.com/joycorp/cordova-plugin-exitapp/pull/1
